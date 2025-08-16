@@ -213,28 +213,29 @@
                     Dziękujemy za zamówienie! Możesz odebrać swoje dzieła pod tym adresem:
                 </p>
                 <div class="text-center text-gray-900 font-bold text-xl">
-                    <p>299+Strażów%2CStrażów%2C</p>
+                    <p>299, Strażów, Poland</p>
                 </div>
                 <div class="w-full h-96 rounded-xl overflow-hidden shadow-md">
-                   <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d0!2d22.121139!3d50.066778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA0JzAwLjQiTiAyMsKwMDcnMTYuMSJF!5e0!3m2!1sen!2s!4v1692200000000!5m2!1sen!2s" 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
-                 </iframe>
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159.25595995736294!2d22.259960250669294!3d50.04655519808383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d09a0a0d9b437%3A0xc39281a17950c40e!2zU3RyYcW8b3cgMjk5LCDFgmHFh8WEY2t3dCwgUG9sYW5k!5e0!3m2!1sen!2sus!4v1660606041300!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
 
                 </div>
-                <form id="order-form" action="https://formsubmit.co/glowbytedev@gmail.com" method="POST" class="hidden">
+                <form id="order-form" action="https://formsubmit.co/glowbytedev@gmail.com" method="POST" class="space-y-4">
                     <input type="hidden" name="_subject" value="Nowe zamówienie z Miłek Sprzedaje">
                     <input type="hidden" name="cart_items" id="cart-items-input">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="text-center">
+                        <button type="submit" id="send-order-btn" class="px-8 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                            Potwierdź zamówienie
+                        </button>
+                    </div>
                 </form>
-                <div class="text-center">
-                    <button id="send-order-btn" class="px-8 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300">
-                        Potwierdź zamówienie
-                    </button>
-                </div>
             </div>
         </section>
 
@@ -265,7 +266,9 @@
                 Skontaktuj się z nami
             </h2>
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg max-w-2xl mx-auto">
-                <form id="contact-form" class="space-y-6">
+                <form id="contact-form" action="https://formsubmit.co/glowbytedev@gmail.com" method="POST" class="space-y-6">
+                    <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Miłek Sprzedaje">
+                    <input type="hidden" name="_captcha" value="false">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Imię i nazwisko</label>
                         <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
@@ -290,7 +293,7 @@
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between">
             <div class="text-center md:text-left mb-4 md:mb-0">
-                <p>&copy; 2025 Miłek Sprzedaje. </p>
+                <p>© 2025 Miłek Sprzedaje. </p>
             </div>
             <div class="flex items-center space-x-4">
                 <a href="#" class="hover:text-gray-400 transition-colors duration-300">
@@ -346,7 +349,6 @@
         const featuredSection = document.getElementById('featured');
         const orderForm = document.getElementById('order-form');
         const cartItemsInput = document.getElementById('cart-items-input');
-        const sendOrderBtn = document.getElementById('send-order-btn');
         
         let cart = []; // Array to store cart items
 
@@ -385,42 +387,34 @@
             featuredSection.classList.add('hidden');
             checkoutSection.classList.remove('hidden');
             
+            // Format the cart data for the email
+            const cartMessage = cart.map(item => `${item.name} (${item.price} zł)`).join('\n');
+            cartItemsInput.value = cartMessage;
+            
             // Scroll to the new section
             checkoutSection.scrollIntoView({ behavior: 'smooth' });
         });
         
-        // --- Send Order Button Logic (FormSubmit) ---
-        sendOrderBtn.addEventListener('click', () => {
-            if (cart.length > 0) {
-                // Format the cart data for the email
-                const cartMessage = cart.map(item => `${item.name} (${item.price} zł)`).join('\n');
-                cartItemsInput.value = cartMessage;
-                
-                // Submit the hidden FormSubmit form
-                orderForm.submit();
-            } else {
-                alert('Twój koszyk jest pusty!');
-            }
-        });
-        
-        // --- Contact Form Submission (Prevent Default) ---
+        // --- Contact Form Submission (Fixed) ---
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent the form from actually submitting
+            // The default form submission will now work. We can remove this line:
+            // event.preventDefault();
             
-            // Show a simple message (instead of an alert)
+            // We'll still show a success message after the form has been submitted.
+            // FormSubmit redirects to a success page by default, so we'll show a message
+            // on the current page to improve the user experience before the redirect.
             const successMessage = document.createElement('p');
             successMessage.textContent = 'Dziękujemy za wiadomość! Wkrótce się z Tobą skontaktujemy.';
             successMessage.className = 'mt-4 text-center text-green-600 font-semibold';
             
-            // Check if a message already exists to avoid duplicates
             const existingMessage = contactForm.querySelector('.text-green-600');
             if (existingMessage) {
                 existingMessage.remove();
             }
             contactForm.appendChild(successMessage);
             
-            // Optional: Clear the form fields after a delay
+            // This timeout will clear the message. The form will submit after this runs.
             setTimeout(() => {
                 contactForm.reset();
                 successMessage.remove();
