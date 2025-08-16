@@ -1,3 +1,143 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)data:text/html;charset=utf-8,<!DOCTYPE%20html> -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body></body></html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miłek Sprzedaje | Potwierdzenie zamówienia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3f0; /* Soft, off-white background */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header section, copied from the original site -->
+    <header class="bg-white shadow-sm p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="#" class="text-xl md:text-2xl font-bold tracking-tight text-gray-900">
+                Miłek Sprzedaje
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-sm font-medium hover:text-gray-600 transition-colors">Strona główna</a>
+                <a href="#featured" class="text-sm font-medium hover:text-gray-600 transition-colors">Sklep</a>
+                <a href="#about" class="text-sm font-medium hover:text-gray-600 transition-colors">O nas</a>
+                <a href="#contact" class="text-sm font-medium hover:text-gray-600 transition-colors">Kontakt</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative cursor-pointer" id="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-gray-600 transition-colors">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 py-0.5 opacity-0 transition-opacity duration-300">0</span>
+                </div>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-lg font-medium hover:text-gray-600 transition-colors">Strona główna</a>
+            <a href="#featured" class="text-lg font-medium hover:text-gray-600 transition-colors">Sklep</a>
+            <a href="#about" class="text-lg font-medium hover:text-gray-600 transition-colors">O nas</a>
+            <a href="#contact" class="text-lg font-medium hover:text-gray-600 transition-colors">Kontakt</a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 md:px-8">
+        
+        <section id="confirmation" class="my-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
+                Twoje zamówienie jest gotowe!
+            </h2>
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg max-w-4xl mx-auto space-y-6">
+                <p class="text-center text-lg text-gray-700 font-semibold">
+                    Dziękujemy za złożenie zamówienia. Możesz odebrać swoje dzieła pod tym adresem:
+                </p>
+                <div class="text-center text-gray-900 font-bold text-xl">
+                    <p>299, Strażów, Poland</p>
+                </div>
+                <div class="w-full h-96 rounded-xl overflow-hidden shadow-md">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2551.980309990393!2d22.257523115682898!3d50.054350379424755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d09a061b4d081%3A0x8677f502c34c679a!2sStra%C5%BC%C3%B3w%20299%2C%2037-123%20Stra%C5%BC%C3%B3w%2C%20Poland!5e0!3m2!1sen!2sus!4v1625900000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="text-center">
+                    <a href="index.html" class="inline-block mt-4 px-8 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                        Wróć do strony głównej
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer section, copied from the original site -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p>© 2025 Miłek Sprzedaje.</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-gray-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-gray-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37a4 4 0 1 1-6.19-2.06 4 4 0 0 1 6.19 2.06z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-gray-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M22.614 4.545a9.58 9.58 0 0 1-2.73 1.14c-.81.455-1.68.75-2.58.9a4.87 4.87 0 0 0-3.32-1.39c-3.15 0-5.71 2.56-5.71 5.71 0 .455.05.9.15 1.34a13.62 13.62 0 0 1-9.92-5.02 5.71 5.71 0 0 0-1.57 2.86c0 1.98 1.01 3.73 2.55 4.75a5.6 5.6 0 0 1-2.58-.7v.07c0 2.76 1.96 5.06 4.55 5.58a5.71 5.71 0 0 1-2.58.1c.71 2.25 2.76 3.9 5.2 4.49-1.94 1.52-4.38 2.4-7.05 2.4-1.28 0-2.5-.07-3.69-.25a16.14 16.14 0 0 0 8.78 2.57c10.53 0 16.29-8.73 16.29-16.29 0-.25-.01-.5-.02-.75.71-.51 1.32-1.12 1.83-1.8z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('-translate-x-full');
+        });
+        
+        // Close menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        });
+    </script>
+</body>
+</html>
