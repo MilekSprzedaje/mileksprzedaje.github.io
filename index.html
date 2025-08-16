@@ -216,7 +216,7 @@
                     <p>299, Strażów, Poland</p>
                 </div>
                 <div class="w-full h-96 rounded-xl overflow-hidden shadow-md">
-                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159.25595995736294!2d22.259960250669294!3d50.04655519808383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d09a0a0d9b437%3A0xc39281a17950c40e!2zU3RyYcW8b3cgMjk5LCDFgmHFh8WEY2t3dCwgUG9sYW5k!5e0!3m2!1sen!2sus!4v1660606041300!5m2!1sen!2sus"
+                   <iframe src="http://googleusercontent.com/maps.google.com/4"
                         width="100%"
                         height="100%"
                         style="border:0;"
@@ -226,7 +226,7 @@
                     </iframe>
 
                 </div>
-                <form id="order-form" action="https://formsubmit.co/glowbytedev@gmail.com" method="POST" class="space-y-4">
+                <form id="order-form" class="space-y-4">
                     <input type="hidden" name="_subject" value="Nowe zamówienie z Miłek Sprzedaje">
                     <input type="hidden" name="cart_items" id="cart-items-input">
                     <input type="hidden" name="_template" value="table">
@@ -266,7 +266,7 @@
                 Skontaktuj się z nami
             </h2>
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg max-w-2xl mx-auto">
-                <form id="contact-form" action="https://formsubmit.co/glowbytedev@gmail.com" method="POST" class="space-y-6">
+                <form id="contact-form" class="space-y-6">
                     <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Miłek Sprzedaje">
                     <input type="hidden" name="_captcha" value="false">
                     <div>
@@ -349,6 +349,7 @@
         const featuredSection = document.getElementById('featured');
         const orderForm = document.getElementById('order-form');
         const cartItemsInput = document.getElementById('cart-items-input');
+        const contactForm = document.getElementById('contact-form');
         
         let cart = []; // Array to store cart items
 
@@ -395,30 +396,69 @@
             checkoutSection.scrollIntoView({ behavior: 'smooth' });
         });
         
-        // --- Contact Form Submission (Fixed) ---
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (event) => {
-            // The default form submission will now work. We can remove this line:
-            // event.preventDefault();
-            
-            // We'll still show a success message after the form has been submitted.
-            // FormSubmit redirects to a success page by default, so we'll show a message
-            // on the current page to improve the user experience before the redirect.
-            const successMessage = document.createElement('p');
-            successMessage.textContent = 'Dziękujemy za wiadomość! Wkrótce się z Tobą skontaktujemy.';
-            successMessage.className = 'mt-4 text-center text-green-600 font-semibold';
-            
-            const existingMessage = contactForm.querySelector('.text-green-600');
-            if (existingMessage) {
-                existingMessage.remove();
+        // --- Unified Form Submission Handler (new) ---
+        const handleSubmit = async (event, form) => {
+            event.preventDefault(); // This is the key line to stop the page from reloading
+
+            const formData = new FormData(form);
+            const formUrl = `https://formsubmit.co/glowbytedev@gmail.com`;
+
+            try {
+                const response = await fetch(formUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Show a success message
+                    const successMessage = document.createElement('p');
+                    successMessage.textContent = 'Dziękujemy! Twoja wiadomość została wysłana.';
+                    successMessage.className = 'mt-4 text-center text-green-600 font-semibold';
+                    form.appendChild(successMessage);
+                    form.reset();
+                    
+                    // Remove the message after a few seconds
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                    
+                    // For the order form, we should also clear the cart and reset the view
+                    if (form.id === 'order-form') {
+                        cart = [];
+                        cartCountSpan.textContent = '0';
+                        cartCountSpan.classList.remove('opacity-100');
+                        checkoutBtn.classList.add('hidden');
+                        
+                        // Hide checkout section and show featured section again
+                        checkoutSection.classList.add('hidden');
+                        featuredSection.classList.remove('hidden');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    alert(`Wystąpił błąd: ${errorText}`);
+                }
+            } catch (error) {
+                alert('Wystąpił błąd podczas wysyłania. Spróbuj ponownie.');
+                console.error('Error:', error);
             }
-            contactForm.appendChild(successMessage);
-            
-            // This timeout will clear the message. The form will submit after this runs.
-            setTimeout(() => {
-                contactForm.reset();
-                successMessage.remove();
-            }, 5000);
+        };
+
+        // Listen for the contact form submission
+        contactForm.addEventListener('submit', (event) => {
+            handleSubmit(event, contactForm);
+        });
+
+        // Listen for the order form submission
+        orderForm.addEventListener('submit', (event) => {
+            if (cart.length > 0) {
+                handleSubmit(event, orderForm);
+            } else {
+                alert('Twój koszyk jest pusty!');
+                event.preventDefault(); // Stop form submission if cart is empty
+            }
         });
     </script>
 
