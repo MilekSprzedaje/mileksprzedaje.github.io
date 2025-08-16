@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miłek Sprzedaje | Sztuka dla Twojego Domu</title>
-    <!-- Use the Inter font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -19,15 +17,12 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Header & Navigation -->
     <header class="bg-white shadow-sm p-4 sticky top-0 z-50">
         <div class="container mx-auto flex items-center justify-between">
-            <!-- Logo/Brand Name -->
             <a href="#" class="text-xl md:text-2xl font-bold tracking-tight text-gray-900">
                 Miłek Sprzedaje
             </a>
             
-            <!-- Navigation Links -->
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="#home" class="text-sm font-medium hover:text-gray-600 transition-colors">Strona główna</a>
                 <a href="#featured" class="text-sm font-medium hover:text-gray-600 transition-colors">Sklep</a>
@@ -35,19 +30,20 @@
                 <a href="#contact" class="text-sm font-medium hover:text-gray-600 transition-colors">Kontakt</a>
             </nav>
 
-            <!-- Shopping Cart Icon -->
-            <div class="relative cursor-pointer">
-                <!-- Inline SVG for the cart icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-gray-600 transition-colors">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                <!-- Cart count indicator -->
-                <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 py-0.5 opacity-0 transition-opacity duration-300">0</span>
+            <div class="flex items-center space-x-4">
+                <div class="relative cursor-pointer" id="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-gray-600 transition-colors">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 py-0.5 opacity-0 transition-opacity duration-300">0</span>
+                </div>
+                <button id="checkout-btn" class="px-4 py-2 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-md hover:bg-gray-700 transition-colors duration-300 hidden">
+                    Przejdź do kasy
+                </button>
             </div>
 
-            <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -58,7 +54,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu (Hidden by default) -->
     <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300 md:hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
             <a href="#home" class="text-lg font-medium hover:text-gray-600 transition-colors">Strona główna</a>
@@ -68,10 +63,8 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="relative bg-white shadow-xl rounded-b-3xl overflow-hidden mb-16 mx-auto max-w-7xl">
         <div class="relative w-full h-96 md:h-[500px]">
-            <!-- Hero Image with an overlay -->
             <img src="/photos/1000002130.jpg" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-6">
                 <div class="text-center text-white space-y-4">
@@ -91,15 +84,12 @@
 
     <main class="container mx-auto px-4 md:px-8">
         
-        <!-- Featured Products Section -->
         <section id="featured" class="mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900">
                 Wyróżnione obrazy
             </h2>
-            <!-- Grid of product cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Owoce Morza" data-price="5">
                     <img src="/photos/1000002122.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Owoce Morza</h3>
@@ -113,8 +103,7 @@
                     </div>
                 </div>
 
-                <!-- Product Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Motly" data-price="3">
                     <img src="/photos/1000002123.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Motly</h3>
@@ -128,8 +117,7 @@
                     </div>
                 </div>
 
-                <!-- Product Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Ul Na Drzewie" data-price="9">
                     <img src="/photos/1000002124.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Ul Na Drzewie</h3>
@@ -143,8 +131,7 @@
                     </div>
                 </div>
                 
-                <!-- Product Card 4 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Kłebek Dla Kotuw" data-price="2">
                     <img src="/photos/1000002126.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Kłebek Dla Kotuw</h3>
@@ -158,8 +145,7 @@
                     </div>
                 </div>
 
-                <!-- Product Card 5 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Moja Dłoń" data-price="5">
                     <img src="/photos/1000002128.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Moja Dłoń</h3>
@@ -173,8 +159,7 @@
                     </div>
                 </div>
 
-                <!-- Product Card 6 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Gasienica" data-price="4">
                     <img src="/photos/1000002129.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Gasienica</h3>
@@ -188,8 +173,7 @@
                     </div>
                 </div>
                 
-                <!-- Product Card 7 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Rozgwiazda" data-price="9">
                     <img src="/photos/1000002130.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Rozgwiazda</h3>
@@ -203,8 +187,7 @@
                     </div>
                 </div>
 
-                <!-- Product Card 8 -->
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden" data-id="Rozgwiazda" data-price="9">
                     <img src="/photos/1000002131.jpg" class="w-full h-48 object-cover object-center transform hover:scale-105 transition-transform duration-500">
                     <div class="p-5 space-y-3">
                         <h3 class="text-lg font-semibold text-gray-900">Rozgwiazda</h3>
@@ -221,7 +204,39 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
+        <section id="checkout-section" class="mb-16 hidden">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
+                Finalizuj zamówienie
+            </h2>
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg max-w-2xl mx-auto space-y-6">
+                <p class="text-center text-lg text-gray-700 font-semibold">
+                    Dziękujemy za zamówienie! Możesz odebrać swoje dzieła pod tym adresem:
+                </p>
+                <div class="text-center text-gray-900 font-bold text-xl">
+                    <p>YOUR_ADDRESS_HERE</p>
+                </div>
+                <div class="w-full h-96 rounded-xl overflow-hidden shadow-md">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2551.9863268846395!2d22.40428671569766!3d50.06316717942352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d06634c0f3c01%3A0x6b7a5a82e9f3b5c0!2sPa%C5%82ac%20w%20%C5%81a%C5%84cucie!5e0!3m2!1spl!2spl!4v1655823190807!5m2!1spl!2spl"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <form id="order-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="hidden">
+                    <input type="hidden" name="_subject" value="Nowe zamówienie z Miłek Sprzedaje">
+                    <input type="hidden" name="cart_items" id="cart-items-input">
+                </form>
+                <div class="text-center">
+                    <button id="send-order-btn" class="px-8 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                        Potwierdź zamówienie
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="mb-16 bg-white p-8 md:p-12 rounded-3xl shadow-lg">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
                 Nasza historia
@@ -244,7 +259,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
                 Skontaktuj się z nami
@@ -272,14 +286,12 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between">
             <div class="text-center md:text-left mb-4 md:mb-0">
                 <p>&copy; 2025 Miłek Sprzedaje. </p>
             </div>
             <div class="flex items-center space-x-4">
-                <!-- Inline SVG for social media icons -->
                 <a href="#" class="hover:text-gray-400 transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -301,7 +313,6 @@
         </div>
     </footer>
 
-    <!-- Simple Notification Message Box -->
     <div id="notification-box" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl transition-all duration-500 opacity-0 -translate-y-4 pointer-events-none">
         Przedmiot dodany do koszyka!
     </div>
@@ -329,13 +340,31 @@
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
         const cartCountSpan = document.getElementById('cart-count');
         const notificationBox = document.getElementById('notification-box');
-        let cartCount = 0;
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const checkoutSection = document.getElementById('checkout-section');
+        const featuredSection = document.getElementById('featured');
+        const orderForm = document.getElementById('order-form');
+        const cartItemsInput = document.getElementById('cart-items-input');
+        const sendOrderBtn = document.getElementById('send-order-btn');
         
+        let cart = []; // Array to store cart items
+
         addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                cartCount++; // Increment the cart count
-                cartCountSpan.textContent = cartCount; // Update the display
-                cartCountSpan.classList.add('opacity-100'); // Make count visible
+            button.addEventListener('click', (e) => {
+                const productCard = e.target.closest('.bg-white');
+                const productId = productCard.dataset.id;
+                const productPrice = productCard.dataset.price;
+                const productName = productCard.querySelector('h3').textContent;
+
+                // Add item to the cart array
+                cart.push({ id: productId, name: productName, price: productPrice });
+
+                // Update cart count display
+                cartCountSpan.textContent = cart.length;
+                cartCountSpan.classList.add('opacity-100');
+                
+                // Show the checkout button
+                checkoutBtn.classList.remove('hidden');
                 
                 // Show a temporary notification
                 notificationBox.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
@@ -347,6 +376,30 @@
                     notificationBox.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
                 }, 3000);
             });
+        });
+
+        // --- Checkout Button Logic ---
+        checkoutBtn.addEventListener('click', () => {
+            // Hide the featured section and show the checkout section
+            featuredSection.classList.add('hidden');
+            checkoutSection.classList.remove('hidden');
+            
+            // Scroll to the new section
+            checkoutSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // --- Send Order Button Logic (FormSubmit) ---
+        sendOrderBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                // Format the cart data for the email
+                const cartMessage = cart.map(item => `${item.name} (${item.price} zł)`).join('\n');
+                cartItemsInput.value = cartMessage;
+                
+                // Submit the hidden FormSubmit form
+                orderForm.submit();
+            } else {
+                alert('Twój koszyk jest pusty!');
+            }
         });
         
         // --- Contact Form Submission (Prevent Default) ---
