@@ -204,42 +204,6 @@
             </div>
         </section>
 
-        <section id="checkout-section" class="mb-16 hidden">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
-                Finalizuj zamówienie
-            </h2>
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg max-w-2xl mx-auto space-y-6">
-                <p class="text-center text-lg text-gray-700 font-semibold">
-                    Dziękujemy za zamówienie! Możesz odebrać swoje dzieła pod tym adresem:
-                </p>
-                <div class="text-center text-gray-900 font-bold text-xl">
-                    <p>299, Strażów, Poland</p>
-                </div>
-                <div class="w-full h-96 rounded-xl overflow-hidden shadow-md">
-                   <iframe src="http://googleusercontent.com/maps.google.com/4"
-                        width="100%"
-                        height="100%"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-
-                </div>
-                <form id="order-form" class="space-y-4">
-                    <input type="hidden" name="_subject" value="Nowe zamówienie z Miłek Sprzedaje">
-                    <input type="hidden" name="cart_items" id="cart-items-input">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://mileksprzedaje.github.io/visit-us">
-                    <div class="text-center">
-                        <button type="submit" id="send-order-btn" class="px-8 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300">
-                            Potwierdź zamówienie
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
         <section id="about" class="mb-16 bg-white p-8 md:p-12 rounded-3xl shadow-lg">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
                 Historia Miłek
@@ -281,7 +245,7 @@
                         <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Wiadomość</label>
+                        <label for="message" class="block text-sm font-medium text-gray-700">O której godzinie i w którym dniu spotkamy się pod wskazanym adresem? (Adres zostanie podany na następnej stronie)</label>
                         <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"></textarea>
                     </div>
                     <button type="submit" class="w-full py-3 px-4 bg-gray-900 text-white font-semibold rounded-full shadow-md hover:bg-gray-700 transition-colors duration-300">
